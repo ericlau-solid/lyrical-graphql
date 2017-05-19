@@ -17,8 +17,8 @@ if (!MONGO_URI) {
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
-    .once('open', () => console.log('Connected to MongoLab instance.'))
-    .on('error', error => console.log('Error connecting to MongoLab:', error));
+  .once('open', () => console.log('Connected to MongoLab instance.'))
+  .on('error', error => console.log('Error connecting to MongoLab:', error));
 
 app.use(bodyParser.json());
 app.use('/graphql', expressGraphQL({
@@ -30,6 +30,19 @@ app.use('/graphql', expressGraphQL({
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config.js');
-app.use(webpackMiddleware(webpack(webpackConfig)));
+const compiler = webpack(webpackConfig);
+app.use(webpackMiddleware(compiler));
+app.use(express.static(path.join(__dirname + '/../client')));
+app.use('*', function (req, res, next) {
+  const filename = path.join(compiler.outputPath, 'index.html');
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    res.set('content-type', 'text/html');
+    res.send(result);
+    res.end();
+  });
+});
 
 module.exports = app;

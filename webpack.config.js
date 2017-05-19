@@ -22,8 +22,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: 'client/index.html'
+      template: './client/index.ejs',
     })
   ]
 };

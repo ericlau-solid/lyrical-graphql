@@ -1,7 +1,7 @@
 import React from 'react';
 import SongList from './SongList';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   NavLink
 } from 'react-router-dom';
