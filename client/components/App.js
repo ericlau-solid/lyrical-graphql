@@ -1,29 +1,26 @@
 import React from 'react';
 import SongList from './SongList';
+import SongCreate from './SongCreate';
 import {
   BrowserRouter as Router,
   Route,
-  NavLink
+  Link
 } from 'react-router-dom';
-
-const Foo = () => (
-  <div>foo this!</div>
-)
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Route exact path="/" component={SongList} />
-        <Route path="/foo" component={Foo}/>
-        <NavLink exact to="/" activeStyle={{
-          fontWeight: 'bold',
-          color: 'red'
-        }}>Song List</NavLink> >
-        <NavLink to="/foo" activeStyle={{
-          fontWeight: 'bold',
-          color: 'red'
-        }}>Foo</NavLink>
+        <Route path="/songs/new" component={SongCreate} />
+
+        <Link to="/">Song List</Link> >
+        <Link
+          to="/songs/new"
+          className="btn-floating btn-large red right"
+        >
+          <i className="material-icons">add</i>
+        </Link>
       </div>
     </Router>
   )
