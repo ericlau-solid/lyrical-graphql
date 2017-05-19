@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const models = require('./models');
 const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
@@ -24,6 +25,12 @@ app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
 }));
+// app.use('/', express.static(path.resolve(__dirname, '../client/')));
+// app.use(/^\/(?!api).*/, express.static(path.resolve(__dirname, '../client/')));
+// app.use(express.static(__dirname + '../client'));
+// app.get('*', function (request, response){
+//   response.sendFile(path.resolve(__dirname, '../client', 'index.html'))
+// })
 
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpack = require('webpack');
