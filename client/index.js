@@ -4,6 +4,7 @@ import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 const client = new ApolloClient({});
 import App from './components/App';
+import './style/style.css';
 
 const Root = () => {
   return (
