@@ -1,6 +1,6 @@
 import React from 'react';
-import gql from 'graphql-tag';
-import {graphql} from 'react-apollo';
+import { fetchSongs } from '../queries';
+import { graphql } from 'react-apollo';
 
 export const SongList = (props) => {
   const renderSongs = () => (
@@ -19,13 +19,4 @@ export const SongList = (props) => {
   )
 };
 
-const query = gql`
-  {
-    songs {
-      id
-      title
-    }
-  }
-`;
-
-export default graphql(query)(SongList);
+export default graphql(fetchSongs)(SongList);
