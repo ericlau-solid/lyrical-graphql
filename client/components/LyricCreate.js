@@ -14,7 +14,7 @@ class LyricCreate extends Component {
     await this.props.mutate({
       variables: {
         content: this.state.content,
-        songId: this.props.match.params.id,
+        songId: this.props.match.params.songId,
       }
     });
     this.setState({ content: '' });

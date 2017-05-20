@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  dataIdFromObject: o => o.id
+});
 import App from './components/App';
 import './style/style.css';
 

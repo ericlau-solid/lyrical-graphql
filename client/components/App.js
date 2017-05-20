@@ -14,7 +14,7 @@ const App = () => {
       <div className="container">
         <Route exact path="/" component={SongList} />
         <Route path="/songs/new" component={SongCreate} />
-        <Route path="/songs/:id" component={SongDetail} />
+        <Route path="/songs/:songId" component={SongDetail} />
 
         <Link to="/">Song List</Link> >
         <Link
