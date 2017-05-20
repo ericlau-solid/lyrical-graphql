@@ -1,6 +1,7 @@
 import React from 'react';
 import SongList from './SongList';
 import SongCreate from './SongCreate';
+import SongDetail from './SongDetail';
 import {
   BrowserRouter as Router,
   Route,
@@ -13,6 +14,7 @@ const App = () => {
       <div className="container">
         <Route exact path="/" component={SongList} />
         <Route path="/songs/new" component={SongCreate} />
+        <Route path="/songs/:id" component={SongDetail} />
 
         <Link to="/">Song List</Link> >
         <Link

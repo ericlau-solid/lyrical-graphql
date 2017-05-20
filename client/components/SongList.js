@@ -1,6 +1,7 @@
 import React from 'react';
 import { deleteSong, fetchSongs } from '../queries';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router-dom';
 
 export const SongList = (props) => {
   const onSongDelete = async (id) => {
@@ -16,7 +17,9 @@ export const SongList = (props) => {
   const renderSongs = () => (
     props.data.songs.map(({ id, title }) => (
         <li key={id} className="collection-item">
-          {title}
+          <Link to={`/songs/${id}`}>
+            {title}
+          </Link>
           <i
             className="material-icons"
             onClick={() => onSongDelete(id)}
