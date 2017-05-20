@@ -11,13 +11,15 @@ class LyricCreate extends Component {
 
   onSubmit = async (event) => {
     event.preventDefault();
+    const content = this.state.content;
+    this.setState({ content: '' });
     await this.props.mutate({
       variables: {
-        content: this.state.content,
+        content: content,
         songId: this.props.match.params.songId,
       }
     });
-    this.setState({ content: '' });
+    debugger;
   }
 
   render() {
